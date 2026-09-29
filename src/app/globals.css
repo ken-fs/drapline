@@ -1,0 +1,202 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * drapline.xyz — cold "run lab" palette.
+ *
+ * Competitor audit (2026-09-29): drapline.wiki (amber + black bar),
+ * drapline.app (coral + cream, editorial serif), drapline.shop (indigo +
+ * serif journal), drapline.org (charcoal + gold + serif) all sit in the warm
+ * family with serif display type. This site's edge is data legibility and
+ * tools, so the ground is cold petrol on cold paper, the accent is acid lime,
+ * and warm hues are reserved for semantics: ember for debt/warning, rust for
+ * poison, jade for confirmed. Every text pair below was verified by
+ * scripts/tokens.mjs (contrast >= 4.5:1 body, >= 3:1 large).
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-plex-mono);
+  --font-heading: var(--font-space-grotesk);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /*
+   * Achievement rarity ladder: sequential petrol→lime ramp, not a rainbow.
+   * Ordinal data (rarer = further along the ramp), so it reads as a scale.
+   */
+  --color-rarity-common: var(--rarity-common);
+  --color-rarity-uncommon: var(--rarity-uncommon);
+  --color-rarity-rare: var(--rarity-rare);
+  --color-rarity-ultra: var(--rarity-ultra);
+
+  /* Semantic accents (see script output) */
+  --color-ember: var(--ember);
+  --color-ember-deep: var(--ember-deep);
+  --color-rust: var(--rust);
+  --color-jade: var(--jade);
+  --color-lime: var(--lime);
+  --color-lime-text: var(--lime-text);
+
+  /* Radius lock: controls are pill, containers are 8px. Two values only. */
+  --radius-control: 999px;
+  --radius-container: 8px;
+  --radius: 8px;
+}
+
+:root {
+  --background: oklch(0.978 0.004 200); /* #F5F9F9 cold paper */
+  --foreground: oklch(0.26 0.028 214); /* #13282C petrol ink */
+  --card: oklch(0.992 0.003 200);
+  --card-foreground: oklch(0.26 0.028 214);
+  --popover: oklch(0.992 0.003 200);
+  --popover-foreground: oklch(0.26 0.028 214);
+  --primary: oklch(0.32 0.05 214); /* #0B3942 petrol */
+  --primary-foreground: oklch(0.978 0.004 200);
+  --secondary: oklch(0.955 0.006 200);
+  --secondary-foreground: oklch(0.26 0.028 214);
+  --muted: oklch(0.955 0.006 200);
+  --muted-foreground: oklch(0.42 0.022 214);
+  --accent: oklch(0.86 0.19 118); /* #C7E02B acid lime */
+  --accent-foreground: oklch(0.22 0.04 216);
+  --destructive: oklch(0.55 0.19 25);
+  --border: oklch(0.9 0.008 205);
+  --input: oklch(0.9 0.008 205);
+  --ring: oklch(0.52 0.14 132);
+
+  --rarity-common: oklch(0.55 0.016 212); /* >50% */
+  --rarity-uncommon: oklch(0.42 0.022 214); /* 20-50% */
+  --rarity-rare: oklch(0.5 0.11 168); /* 5-20% */
+  --rarity-ultra: oklch(0.22 0.04 216); /* <5% */
+
+  --ember: oklch(0.66 0.17 45);
+  --ember-deep: oklch(0.55 0.16 40);
+  --rust: oklch(0.55 0.19 25);
+  --jade: oklch(0.5 0.11 168);
+  --lime: oklch(0.86 0.19 118);
+  --lime-text: oklch(0.52 0.14 132);
+}
+
+.dark {
+  --background: oklch(0.19 0.02 216); /* #09161A */
+  --foreground: oklch(0.93 0.008 200);
+  --card: oklch(0.24 0.025 214);
+  --card-foreground: oklch(0.93 0.008 200);
+  --popover: oklch(0.24 0.025 214);
+  --popover-foreground: oklch(0.93 0.008 200);
+  --primary: oklch(0.86 0.19 118); /* lime on dark deck */
+  --primary-foreground: oklch(0.19 0.02 216);
+  --secondary: oklch(0.24 0.025 214);
+  --secondary-foreground: oklch(0.93 0.008 200);
+  --muted: oklch(0.24 0.025 214);
+  --muted-foreground: oklch(0.72 0.012 205);
+  --accent: oklch(0.86 0.19 118);
+  --accent-foreground: oklch(0.19 0.02 216);
+  --destructive: oklch(0.66 0.17 45);
+  --border: oklch(0.32 0.02 214);
+  --input: oklch(0.32 0.02 214);
+  --ring: oklch(0.86 0.19 118);
+
+  --rarity-common: oklch(0.72 0.012 205);
+  --rarity-uncommon: oklch(0.8 0.02 205);
+  --rarity-rare: oklch(0.62 0.11 168);
+  --rarity-ultra: oklch(0.86 0.19 118);
+
+  --ember: oklch(0.72 0.16 45);
+  --ember-deep: oklch(0.66 0.17 45);
+  --rust: oklch(0.72 0.16 25);
+  --jade: oklch(0.68 0.11 168);
+  --lime: oklch(0.86 0.19 118);
+  --lime-text: oklch(0.86 0.19 118);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  /* Data sites read better with fixed-width numerals everywhere. */
+  .tnum,
+  table,
+  time,
+  .stat {
+    font-variant-numeric: tabular-nums;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+}
+
+@layer components {
+  /* Section eyebrow: the small mono label above a heading. */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground;
+  }
+  /* Card used across database pages. Flat, 1px border, no shadow. */
+  .panel {
+    @apply rounded-[var(--radius-container)] border border-border bg-card;
+  }
+  .prose-wiki {
+    @apply text-[15px] leading-7 text-foreground/90;
+  }
+  .prose-wiki h2 {
+    @apply mt-10 mb-3 text-xl font-semibold tracking-tight;
+  }
+  .prose-wiki h3 {
+    @apply mt-7 mb-2 text-[17px] font-semibold tracking-tight;
+  }
+  .prose-wiki p {
+    @apply my-3;
+  }
+  .prose-wiki ul {
+    @apply my-3 ml-5 list-disc space-y-1;
+  }
+  .prose-wiki a {
+    @apply font-medium underline decoration-[1.5px] underline-offset-2;
+    text-decoration-color: var(--lime-text);
+  }
+  .prose-wiki table {
+    @apply my-4 w-full border-collapse text-sm;
+  }
+  .prose-wiki th {
+    @apply border-b border-border pb-2 text-left font-mono text-[11px] uppercase tracking-wider text-muted-foreground;
+  }
+  .prose-wiki td {
+    @apply border-b border-border/60 py-2 align-top;
+  }
+}
