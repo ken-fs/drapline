@@ -42,6 +42,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
+    images: [
+      {
+        url: `${SITE_URL}/images/shot-4.jpg`,
+        width: 1920,
+        height: 1080,
+        alt: "The DRAPLINE weekly meal screen: three meal cards, Coo's stat panel and the personality bar",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
   },
   robots: { index: true, follow: true },
 };
