@@ -11,6 +11,7 @@ const COLUMNS = [
       { href: "/achievements/", label: "Achievements" },
       { href: "/endings/", label: "Endings" },
       { href: "/skills/", label: "Skills and synergies" },
+      { href: "/soundtrack/", label: "Soundtrack (22 tracks)" },
     ],
   },
   {

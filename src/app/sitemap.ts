@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/characters/", priority: 0.8, freq: "weekly" },
     { path: "/endings/", priority: 0.8, freq: "weekly" },
     { path: "/skills/", priority: 0.7, freq: "weekly" },
+    { path: "/soundtrack/", priority: 0.6, freq: "monthly" },
     { path: "/guide/", priority: 0.8, freq: "weekly" },
     { path: "/guide/beginner/", priority: 0.8, freq: "weekly" },
     { path: "/guide/personality/", priority: 0.7, freq: "weekly" },
