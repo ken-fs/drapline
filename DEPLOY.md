@@ -21,8 +21,28 @@ Zone ID：`94b251e4a1964144a6c192a8c7c8a857`
 | 域名绑定 | ✅ `drapline.xyz` + `www.drapline.xyz` 均 HTTP 200，证书有效 |
 | IndexNow | ✅ 已提交 61 个 URL（HTTP 202） |
 | 站点巡检 | ✅ site-hygiene 全绿（部署标记 / sitemap 域名 / 关键页） |
-| GA 属性 | ❌ 服务账号在 GA「Ship」账户无创建权限 → 需人工或授权 |
+| GA 属性 | ✅ `G-533QZ4BQ28`（GA4 属性 556545245），走同意门控加载 |
+| Adsterra | ✅ 两个单元（728×90 leaderboard + 300×250 rectangle），**同样走同意门控** |
+| ads.txt | ⚠️ AdSense 记录已放，**Adsterra 记录待补**（从 Adsterra dashboard 复制） |
 | GSC 属性 | ❌ 需人工添加 + 把服务账号加为 Owner |
+
+### 广告位与同意门控
+
+| 页 | 单元 |
+|---|---|
+| 首页 | leaderboard（hero 下方，桌面）+ rectangle（工具段之后） |
+| /achievements/ | rectangle |
+| /auras/[slug] · /meals/[slug] | 侧栏 rectangle |
+| /guide/beginner/ | 正文中段 leaderboard（桌面） |
+
+实现要点：每个单元包在自己的 `srcdoc` iframe 里（Adsterra 的 snippet 用全局
+`atOptions`，同页两个单元会互相覆盖），盒子预先占住精确尺寸（CLS 安全）。
+
+**与 petsuniverse 的差异（有意）**：petsuniverse 的广告不门控，本站的等同意结果。
+因为本站横幅原文承诺“你同意前什么都不会加载”，广告先加载会让这句话变成假的。
+拒绝时广告位收起而不是留空洞。实测：同意前 0 个第三方请求，同意后 2 个 Adsterra + 1 个 GA。
+
+> 新单元上线后通常要等 Adsterra 侧审核/填充，前期空白属正常（盒子已占位，不影响 CLS）。
 
 ### CI 构建配置（已生效，无需再动）
 
@@ -40,7 +60,7 @@ Zone ID：`94b251e4a1964144a6c192a8c7c8a857`
 
 ## 需要人工做的两件事（Git 集成已完成）
 
-### ① GSC 属性
+### ② GSC 属性（GA4 已接好，此项仍需人工）
 
 服务账号：`gsc-bot@ken-seo-tools.iam.gserviceaccount.com`
 
