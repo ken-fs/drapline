@@ -9,8 +9,8 @@
  *
  * Usage: node scripts/submit-indexnow.mjs
  */
-import { readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { readdirSync } from "node:fs";
+
 
 const DOMAIN = "drapline.xyz";
 const SITEMAP = `https://${DOMAIN}/sitemap.xml`;

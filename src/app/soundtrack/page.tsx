@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { GAME } from "@/data/game";
+
 import { PageHeader, SourceNote } from "@/components/page-header";
 import { ItemListJsonLd } from "@/components/json-ld";
 
