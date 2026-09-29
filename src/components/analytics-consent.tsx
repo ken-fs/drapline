@@ -14,7 +14,13 @@ import Link from "next/link";
  */
 
 const KEY = "dl-consent";
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
+/**
+ * Measurement ID for the drapline GA4 property. The build environment can
+ * override it, but the fallback is the real ID rather than an empty string —
+ * a site that silently drops its analytics because a dashboard variable was
+ * never set is a failure nobody notices for a month.
+ */
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-533QZ4BQ28";
 
 function loadAnalytics() {
   if (!GA_ID || document.querySelector("script[data-ga]")) return;
