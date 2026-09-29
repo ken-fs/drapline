@@ -662,6 +662,20 @@ export const STORM = {
     "The one non-defeat calamity achievement that names its mechanic. A storm level exists, it can be pushed to a maximum, and roughly one player in nine has done it.",
 };
 
+/**
+ * Village mechanics confirmed on the official Steam screenshots, not transcribed
+ * from a wiki: helping a villager raises friendship, and each villager's next
+ * friendship bonus improves the rarity of two specific food categories.
+ */
+export const VILLAGE = {
+  friendshipRarity:
+    "Helping a villager builds friendship, and the next friendship bonus is printed on the offer screen: it makes rare meals of two specific categories more likely to appear. Ulupica's, for example, covers Tree and Plant — the two defensive-and-agility lines.",
+  affectionEvents:
+    "Affection events exist as their own system. In-game text for Ulupica Affection Event I reads: \"Occurs on event-free weekends when the following conditions are met: Affection 3 or higher, INT 3000 or higher.\" Two thresholds — a friendship level and a stat — gate each event, and the game shows them before you commit the week.",
+  why:
+    "Which makes helping villagers more than an income action: it is the only lever that changes which meals you are offered. A run that needs Seafood rarity has to court whoever supplies it.",
+};
+
 export const FESTIVAL = {
   name: "Divine Dragon Festival",
   when: "The end of the week after each boss is defeated.",

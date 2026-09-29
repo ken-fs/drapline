@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ACHIEVEMENTS } from "@/data/achievements";
-import { MEAL_TIERS, GAME } from "@/data/game";
+import { MEAL_TIERS, GAME, VILLAGE } from "@/data/game";
 import { PageHeader, SourceNote } from "@/components/page-header";
 
 export const metadata: Metadata = {
@@ -73,8 +73,8 @@ export default function MoneyGuide() {
           <ul>
             <li>
               <strong>Helping townsfolk.</strong> The bread-and-butter action: 15 stamina, paid in gold,
-              and it builds friendship with a villager. Friendship matters beyond money — the villagers
-              tied to a food category make rare meals of that type more likely to appear.
+              and it builds friendship with a villager. The friendship is worth more than the pay:{" "}
+              {VILLAGE.friendshipRarity}
             </li>
             <li>
               <strong>Fighting small calamities.</strong> 25 stamina, the most expensive action, and the
@@ -110,6 +110,10 @@ export default function MoneyGuide() {
             next week paying it down with help-the-villager actions instead of borrowing again. Borrowing
             two weeks running is the pattern that turns into an ending.
           </p>
+
+          <h2>Where friendship pays better than gold</h2>
+          <p>{VILLAGE.affectionEvents}</p>
+          <p>{" "}{VILLAGE.why}</p>
 
           <h2>How to decide in ten seconds</h2>
           <ol>

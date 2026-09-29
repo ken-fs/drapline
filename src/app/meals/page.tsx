@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { MEAL_CATEGORIES, MEAL_TIERS, MEAL_TRAITS, STATS } from "@/data/game";
@@ -63,6 +64,20 @@ export default function MealsHub() {
       />
 
       <div className="mx-auto w-full max-w-6xl px-5 py-10">
+        <figure className="mb-10">
+          <Image
+            src="/images/shot-4.jpg"
+            alt="The DRAPLINE weekly meal screen: three meal cards — Water, Trees and Carbs — with their stat gains and prices, beside Coo's six-stat panel and the WILD–RULE personality bar"
+            width={1920}
+            height={1080}
+            sizes="(max-width: 1024px) 100vw, 1100px"
+            className="h-auto w-full rounded-[var(--radius-container)] border border-border"
+          />
+          <figcaption className="mt-2 font-mono text-[10px] leading-4 text-muted-foreground">
+            The whole decision, once a week: category, star rating, price — next to the stat panel that
+            says which one is lagging. © KANAWO / Vaka, Inc. (official Steam screenshot)
+          </figcaption>
+        </figure>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] border-collapse text-sm">
             <thead>

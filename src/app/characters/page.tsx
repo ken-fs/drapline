@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { CHARACTERS } from "@/data/game";
@@ -39,6 +40,20 @@ export default function CharactersHub() {
       <div className="mx-auto w-full max-w-6xl px-5 py-10">
         <section>
           <h2 className="text-xl font-semibold tracking-tight">Coo and the dragon folk</h2>
+          <figure className="mt-5">
+            <Image
+              src="/images/shot-8.jpg"
+              alt="Arches the werewolf hunter and Knot the shark fisherman talking in the DRAPLINE village, with the harbour and cliffside houses behind them"
+              width={1920}
+              height={1080}
+              sizes="(max-width: 1024px) 100vw, 1100px"
+              className="h-auto w-full rounded-[var(--radius-container)] border border-border"
+            />
+            <figcaption className="mt-2 font-mono text-[10px] leading-4 text-muted-foreground">
+              Arches and Knot — the two villagers whose requests shape a week&apos;s action. © KANAWO / Vaka,
+              Inc. (official Steam screenshot)
+            </figcaption>
+          </figure>
           <div className="mt-5 grid gap-px overflow-hidden rounded-[var(--radius-container)] border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {main.map((c) => (
               <CharacterCard key={c.slug} c={c} />

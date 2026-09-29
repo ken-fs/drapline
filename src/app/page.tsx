@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Flask, BookOpen, Calculator, ListChecks, Sparkle } from "@phosphor-icons/react/dist/ssr";
 import { AURAS, GAME, MEAL_TIERS, DISPUTED, VERSIONS } from "@/data/game";
 import { ACHIEVEMENTS } from "@/data/achievements";
@@ -16,7 +17,7 @@ const DATABASE = [
 const TOOLS = [
   { href: "/tools/aura-planner/", title: "Aura planner", desc: "Pick your feeding focus and treatment; see which of the six auras the September check will award — and what to change if it is the wrong one.", icon: Sparkle },
   { href: "/tools/meal-compare/", title: "Meal tier comparison", desc: "The 3,000 / 6,600 / 14,600 G ladder next to what each tier actually returns, so an expensive week is a decision rather than a guess.", icon: Calculator },
-  { href: "/tools/achievement-tracker/", title: "Achievement tracker", desc: "All 66 achievement routes with their unlock rates, kept in your browser.", icon: ListChecks },
+  { href: "/achievements/", title: "Achievement tracker", desc: "All 66 achievements with their unlock rates, filterable by rarity, kept in your browser.", icon: ListChecks },
 ];
 
 export default function HomePage() {
@@ -32,14 +33,11 @@ export default function HomePage() {
           <div className="mt-5 grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-end">
             <div>
               <h1 className="max-w-xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-                DRAPLINE runs are decided by numbers you can plan for.
+                Plan the run before you spend it.
               </h1>
-              <p className="mt-5 max-w-xl text-[15px] leading-7 text-muted-foreground">
-                You feed a dragon girl for 48 weeks, the aura locks in October, and 25 futures wait on
-                the other side. This site keeps the tables those decisions need: all six auras with
-                their conditions and Steam unlock rates, the meal category-to-stat map, every one of
-                the 66 achievements, and the ending list — assembled from the game&apos;s own data
-                instead of copied from the wiki that stopped updating in Early Access.
+              <p className="mt-5 max-w-lg text-[15px] leading-7 text-muted-foreground">
+                Forty-eight weeks, six auras, 200+ skills and 66 achievements — with the tables the game
+                only ever shows you three meals at a time.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
@@ -57,22 +55,39 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* The numbers a run is made of */}
-            <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-container)] border border-border bg-border">
-              {[
-                { k: "48", v: "weeks per run" },
-                { k: "6", v: "possible auras" },
-                { k: "12", v: "meal categories" },
-                { k: "200+", v: "skills" },
-                { k: "66", v: "achievements" },
-                { k: "25", v: "advertised endings" },
-              ].map((s) => (
-                <div key={s.v} className="bg-card px-5 py-4">
-                  <dt className="font-mono text-2xl font-medium tracking-tight">{s.k}</dt>
-                  <dd className="mt-1 text-xs text-muted-foreground">{s.v}</dd>
-                </div>
-              ))}
-            </dl>
+            {/* The numbers a run is made of, over an official screenshot */}
+            <div className="space-y-4">
+              <figure>
+                <Image
+                  src="/images/shot-6.jpg"
+                  alt="Coo's stat panel and the village map in DRAPLINE during Month 8, showing the WILD–RULE personality bar, stamina, the six stats and a friendship bonus for Ulupica"
+                  width={1920}
+                  height={1080}
+                  priority
+                  sizes="(max-width: 1023px) 100vw, 560px"
+                  className="h-auto w-full rounded-[var(--radius-container)] border border-border"
+                />
+                <figcaption className="mt-2 font-mono text-[10px] leading-4 text-muted-foreground">
+                  Month 8, Week 4 — personality bar, stamina and six stats, on screen at all times.
+                  © KANAWO / Vaka, Inc. (official Steam screenshot)
+                </figcaption>
+              </figure>
+              <dl className="grid grid-cols-3 gap-px overflow-hidden rounded-[var(--radius-container)] border border-border bg-border">
+                {[
+                  { k: "48", v: "weeks per run" },
+                  { k: "6", v: "possible auras" },
+                  { k: "12", v: "meal categories" },
+                  { k: "200+", v: "skills" },
+                  { k: "66", v: "achievements" },
+                  { k: "25", v: "advertised endings" },
+                ].map((s) => (
+                  <div key={s.v} className="bg-card px-4 py-3">
+                    <dt className="font-mono text-xl font-medium tracking-tight">{s.k}</dt>
+                    <dd className="mt-0.5 text-[11px] leading-4 text-muted-foreground">{s.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
         </div>
       </section>
@@ -146,23 +161,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tools */}
+      {/* Tools — a horizontal index rather than a third card grid in a row */}
       <section className="border-b border-border bg-muted/30">
         <div className="mx-auto w-full max-w-6xl px-5 py-12">
           <p className="eyebrow">Tools</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight">Plan the run before you spend it</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {TOOLS.map((t) => (
-              <Link key={t.href} href={t.href} className="panel group p-6 transition-colors hover:border-foreground/30">
-                <t.icon size={20} weight="bold" className="text-muted-foreground" />
-                <h3 className="mt-3 text-base font-semibold tracking-tight">{t.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{t.desc}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium">
-                  Open <ArrowRight size={13} weight="bold" />
-                </span>
-              </Link>
+          <ul className="mt-8 divide-y divide-border border-y border-border">
+            {TOOLS.map((t, i) => (
+              <li key={t.href}>
+                <Link href={t.href} className="group grid items-baseline gap-x-6 gap-y-2 py-6 sm:grid-cols-[auto_1fr_auto]">
+                  <span className="flex items-baseline gap-4 sm:w-64">
+                    <span className="font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="text-lg font-semibold tracking-tight">{t.title}</span>
+                  </span>
+                  <span className="max-w-2xl text-sm leading-6 text-muted-foreground">{t.desc}</span>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium">
+                    Open
+                    <ArrowRight size={13} weight="bold" className="transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
