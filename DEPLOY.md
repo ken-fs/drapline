@@ -58,9 +58,9 @@ Zone ID：`94b251e4a1964144a6c192a8c7c8a857`
 
 ---
 
-## 需要人工做的两件事（Git 集成已完成）
+## 需要人工做的事
 
-### ② GSC 属性（GA4 已接好，此项仍需人工）
+### ① GSC 属性
 
 服务账号：`gsc-bot@ken-seo-tools.iam.gserviceaccount.com`
 
@@ -74,20 +74,18 @@ Zone ID：`94b251e4a1964144a6c192a8c7c8a857`
 
 加好后跑：`node ~/Desktop/david/Ship/scripts/gsc.mjs sitemaps`
 
-### ② GA4 属性
-`gsc-bot` 在 GA 账户「Ship」(`405567176`) 里没有创建权限（实测 403）。
-两个选择：
+### ② 广告：补 Adsterra 的 ads.txt 记录（可选但建议）
 
-- **A**：在 GCP 项目里给 `gsc-bot@ken-seo-tools.iam.gserviceaccount.com` 授予 GA 账户的「编辑者」角色，
-  然后 `node ~/Desktop/david/Ship/scripts/ga-create.mjs drapline drapline.xyz 405567176`（脚本已写好，会自动建属性+数据流并打印 `G-XXXX`）；
-- **B**：在 GA 后台手动建属性，把测量 ID 填进 Cloudflare 的 `NEXT_PUBLIC_GA_ID` 构建变量。
+`public/ads.txt` 现在只有共享的 AdSense 记录，Adsterra 那一行还空着。
+从 Adsterra dashboard 复制本账户的 ads.txt 记录（格式 `<host>, <publisher-id>, DIRECT, <tag-id>`）
+追加到 `public/ads.txt`，commit + push 即可 —— 没有这行，需求方平台无法验证本站有权限卖 Adsterra 库存。
 
-> 本站 GA 是**同意门控**的：`NEXT_PUBLIC_GA_ID` 未设置时 `AnalyticsConsent` 组件**不渲染横幅**，
-> 设了之后点「接受」才注入 gtag。所以现在线上零第三方请求。
+> GA4 已接好（`G-533QZ4BQ28`，属性 556545245），代码里的兜底值即真实 ID，
+> 不依赖 dashboard 环境变量；要改就设 Cloudflare 的 `NEXT_PUBLIC_GA_ID` 覆盖。
 
 ---
 
-## 站点结构（64 页）
+## 站点结构（65 页）
 
 ```
 /                          首页（run 决策 + 数据库入口）
