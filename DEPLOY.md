@@ -11,50 +11,36 @@ Zone ID：`94b251e4a1964144a6c192a8c7c8a857`
 
 | 项 | 状态 |
 |---|---|
-| 代码 | ✅ 已推到 `main`（3 个提交） |
-| 本地构建 | ✅ `pnpm build` 通过，64 页静态产出 |
+| 代码 | ✅ 已推到 `main`（9 个提交） |
+| 本地构建 | ✅ `pnpm build` 通过，63 页静态产出 |
 | Worker | ✅ 已部署 `https://drapline.493129720ljw.workers.dev` |
-| 部署标记 | ✅ `prebuild` 写 `.well-known/anvilwiki-deploy.txt` = git HEAD |
-| Zone | ⏳ `pending` — NS 已通过 Spaceship API 改为 `daisy/lochlan.ns.cloudflare.com` |
-| 域名绑定 | ⏳ 后台轮询脚本已挂（见下），zone 激活后自动绑 apex + www |
+| **Cloudflare Git 集成** | ✅ **2026-09-29 已连接**（dashboard → Settings → Builds → `ken-fs/drapline`） |
+| **CI 首次构建** | ✅ 构建 97d45b85 · 成功 · 构建命令自动识别为 `pnpm run build`，部署 `npx wrangler deploy` |
+| 部署标记 | ✅ `prebuild` 写 `.well-known/anvilwiki-deploy.txt`，CI 读 `WORKERS_CI_COMMIT_SHA` = 269ac8f |
+| Zone | ✅ `active`（NS 经 Spaceship API 改为 `daisy/lochlan.ns.cloudflare.com`） |
+| 域名绑定 | ✅ `drapline.xyz` + `www.drapline.xyz` 均 HTTP 200，证书有效 |
+| IndexNow | ✅ 已提交 61 个 URL（HTTP 202） |
+| 站点巡检 | ✅ site-hygiene 全绿（部署标记 / sitemap 域名 / 关键页） |
 | GA 属性 | ❌ 服务账号在 GA「Ship」账户无创建权限 → 需人工或授权 |
 | GSC 属性 | ❌ 需人工添加 + 把服务账号加为 Owner |
-| IndexNow | 🔜 key 文件已随构建上线，绑定后跑 `scripts/submit-indexnow.mjs` |
-| Git 集成 | ❌ 需 dashboard 手动连（见下） |
 
-### 后台轮询（自动绑域名）
+### CI 构建配置（已生效，无需再动）
 
-`scripts/wait-and-bind.mjs` 每 2 分钟查一次 zone 状态，激活后绑定
-`drapline.xyz` 与 `www.drapline.xyz`，日志在 `/tmp/drapline-bind.log`。
-
-```bash
-# 还在跑吗
-ps aux | grep wait-and-bind | grep -v grep
-# 手动跑一次
-node scripts/wait-and-bind.mjs --once
+```
+构建命令   pnpm run build        # CF 从仓库自动识别（pnpm@11.9.0 / nodejs@24.18.0）
+部署命令   npx wrangler deploy
+环境变量   NEXT_PUBLIC_SITE_URL 未设 → site.ts 兜底即真实域名，canonical 正确
+          NEXT_PUBLIC_GA_ID     待 GA 属性建好后补（未设 = 不显示同意横幅、零第三方请求）
 ```
 
-> ⚠️ 教训复用（2026-09-22 animedice）：**zone 还是 pending 时绑自定义域名会让证书签发卡死且不重试**。
-> 所以这个脚本只在 `status === "active"` 之后才绑。
+> 可选优化：dashboard 的构建配置里打开 **构建缓存**（当前日志有 `No build cache found`），
+> 能把 ~20s 的构建压到几秒。非必需。
 
 ---
 
-## 需要人工做的三件事
+## 需要人工做的两件事（Git 集成已完成）
 
-### ① Cloudflare Git 集成（必须 dashboard）
-
-**为什么不能用 API**：2026-09-28 kaijualpha 踩坑记录 —— `PUT /accounts/{id}/builds/repos/connections` +
-`POST /accounts/{id}/builds/workers` 那套 API 接的是**另一套 builds 系统**，接完构建全部卡在
-`Build initialization failed: unable to verify Worker`。真正能跑的 Git 集成在 dashboard。
-
-1. https://dash.cloudflare.com → Workers & Pages → `drapline` → **Settings → Builds**
-2. **Connect Git** → 选 `ken-fs/drapline`，分支 `main`
-3. 构建命令：`pnpm run build`　部署命令：`npx wrangler deploy`
-4. 环境变量（Settings → Variables）：`NEXT_PUBLIC_SITE_URL=https://drapline.xyz`（GA 属性建好后补 `NEXT_PUBLIC_GA_ID`）
-
-验证老系统接管：`GET /accounts/{id}/builds/workers/drapline` 返回 `12040`（正常，老系统不在这个 API 可见）。
-
-### ② GSC 属性
+### ① GSC 属性
 
 服务账号：`gsc-bot@ken-seo-tools.iam.gserviceaccount.com`
 
@@ -68,8 +54,7 @@ node scripts/wait-and-bind.mjs --once
 
 加好后跑：`node ~/Desktop/david/Ship/scripts/gsc.mjs sitemaps`
 
-### ③ GA4 属性
-
+### ② GA4 属性
 `gsc-bot` 在 GA 账户「Ship」(`405567176`) 里没有创建权限（实测 403）。
 两个选择：
 
