@@ -4,6 +4,8 @@ import { ArrowRight, Flask, BookOpen, Calculator, ListChecks, Sparkle } from "@p
 import { AURAS, GAME, MEAL_TIERS, DISPUTED, VERSIONS } from "@/data/game";
 import { ACHIEVEMENTS } from "@/data/achievements";
 import { RarityBar } from "@/components/rarity-bar";
+import { AdsterraBanner } from "@/components/adsterra-banner";
+import { LEADERBOARD, RECTANGLE } from "@/lib/ads";
 
 const DATABASE = [
   { href: "/auras/", title: "Six auras", meta: "6 entries", desc: "Every aura's stat focus, treatment and Steam unlock rate — including the two Fandom misses." },
@@ -91,6 +93,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Desktop leaderboard, directly under the hero fold */}
+      <div className="mx-auto w-full max-w-6xl px-5 pt-8">
+        <AdsterraBanner slot={LEADERBOARD} className="hidden md:flex" />
+      </div>
 
       {/* Three decisions */}
       <section className="border-b border-border bg-muted/30">
@@ -185,6 +192,11 @@ export default function HomePage() {
           </ul>
         </div>
       </section>
+
+      {/* Mid-page rectangle */}
+      <div className="mx-auto w-full max-w-6xl px-5 pt-10">
+        <AdsterraBanner slot={RECTANGLE} className="items-start" />
+      </div>
 
       {/* Two-column: game facts + rarest achievements */}
       <section className="border-b border-border">

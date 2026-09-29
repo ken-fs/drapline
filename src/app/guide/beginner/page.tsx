@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MEAL_TIERS, WEEKLY_ACTIONS, GAME } from "@/data/game";
 import { PageHeader, SourceNote } from "@/components/page-header";
+import { AdsterraBanner } from "@/components/adsterra-banner";
+import { LEADERBOARD } from "@/lib/ads";
 
 export const metadata: Metadata = {
   title: "DRAPLINE beginner guide — the first year week by week",
@@ -91,6 +93,10 @@ export default function BeginnerGuide() {
             in a row. Debt that stays open is the <Link href="/endings/">Use Responsibly ending</Link>,
             and it is the only ending that arrives without a boss fight.
           </p>
+
+          <div className="my-8 not-prose">
+            <AdsterraBanner slot={LEADERBOARD} className="hidden md:flex" />
+          </div>
 
           <h2>The four fights that structure the year</h2>
           <ol>

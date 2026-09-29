@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { CONSENT_EVENT, CONSENT_KEY } from "@/lib/use-consent";
 
 /**
  * Consent-gated Google Analytics.
@@ -13,7 +14,7 @@ import Link from "next/link";
  * all rather than showing a banner that gates nothing.
  */
 
-const KEY = "dl-consent";
+const KEY = CONSENT_KEY;
 /**
  * Measurement ID for the drapline GA4 property. The build environment can
  * override it, but the fallback is the real ID rather than an empty string —
@@ -64,6 +65,8 @@ export function AnalyticsConsent() {
       /* nothing to persist; the choice still applies to this page view */
     }
     setShow(false);
+    // Ad slots wait on this instead of polling localStorage.
+    window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: choice }));
     if (choice === "accepted") loadAnalytics();
   }
 
@@ -77,8 +80,8 @@ export function AnalyticsConsent() {
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center">
         <p className="text-sm text-muted-foreground">
-          This site uses Google Analytics to see which guides get read. Nothing loads until you say
-          yes.{" "}
+          This site uses Google Analytics and shows ads, which set third-party cookies. Nothing loads
+          until you say yes — declining costs you nothing but the ads stay off.{" "}
           <Link href="/privacy/" className="underline underline-offset-2">
             Privacy
           </Link>

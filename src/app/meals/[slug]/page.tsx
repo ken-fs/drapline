@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import { AURAS, MEAL_CATEGORIES, MEAL_TIERS, MEAL_TRAITS } from "@/data/game";
 import { PageHeader, SourceNote } from "@/components/page-header";
+import { AdsterraBanner } from "@/components/adsterra-banner";
+import { RECTANGLE } from "@/lib/ads";
 
 export function generateStaticParams() {
   return MEAL_CATEGORIES.map((m) => ({ slug: m.slug }));
@@ -126,6 +128,7 @@ export default async function MealPage({ params }: PageProps<"/meals/[slug]">) {
         </div>
 
         <aside className="space-y-8">
+          <AdsterraBanner slot={RECTANGLE} className="items-start" />
           <div className="panel p-6">
             <p className="eyebrow">Price ladder</p>
             <dl className="mt-3 space-y-3">

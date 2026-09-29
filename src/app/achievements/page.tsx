@@ -6,6 +6,8 @@ import { PageHeader, SourceNote, MetaStat } from "@/components/page-header";
 import { AchievementTable } from "@/components/achievement-table";
 import { FaqJsonLd } from "@/components/json-ld";
 import { RarityBar } from "@/components/rarity-bar";
+import { AdsterraBanner } from "@/components/adsterra-banner";
+import { RECTANGLE } from "@/lib/ads";
 
 export const metadata: Metadata = {
   title: "All 66 DRAPLINE achievements with Steam unlock rates",
@@ -83,6 +85,10 @@ export default function AchievementsPage() {
           Unlock rates were pulled from Steam Community on {GAME.reviews.asOf}. They move as the player
           base grows — a newly released game&apos;s rare achievements get less rare every week.
         </p>
+      </div>
+
+      <div className="mx-auto w-full max-w-6xl px-5 pt-10">
+        <AdsterraBanner slot={RECTANGLE} className="items-start" />
       </div>
 
       <section className="border-t border-border bg-muted/30">

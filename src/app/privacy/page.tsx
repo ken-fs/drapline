@@ -34,17 +34,20 @@ export default function PrivacyPage() {
           </ul>
           <p>Clearing site data in your browser removes all three.</p>
 
-          <h2>Analytics</h2>
+          <h2>Analytics and ads</h2>
           <p>
-            If you accept the consent prompt, the site loads Google Analytics to count page views. If you
-            decline, no analytics script is requested, no cookies are set, and nothing about your visit is
-            measured. The choice is yours and it is remembered.
+            If you accept the consent prompt, the site loads Google Analytics to count page views and
+            requests ads from Adsterra. Both are third-party scripts and both can set cookies. If you
+            decline, neither is requested — no analytics script, no ad iframe, no cookies — and the ad
+            slots collapse instead of holding empty space. The choice is yours and it is remembered.
           </p>
 
           <h2>What this site does not have</h2>
           <p>
-            No accounts, no comments, no newsletter, no advertising, no third-party embeds, and no
-            tracking pixels. The only outbound links go to Steam and to other pages here.
+            No accounts, no comments, no newsletter, and no tracking pixels of its own. The only
+            third-party requests this site can make are the two described above, and both are off until
+            you allow them. No personal data is collected, stored or sold by this site — there is no
+            server-side component to a static site beyond Cloudflare serving the files.
           </p>
 
           <h2>Server logs</h2>

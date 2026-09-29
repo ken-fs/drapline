@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { AURAS, AURA_LOCK, MEAL_CATEGORIES } from "@/data/game";
 import { PageHeader, SourceNote } from "@/components/page-header";
+import { AdsterraBanner } from "@/components/adsterra-banner";
+import { RECTANGLE } from "@/lib/ads";
 import { RarityBar, rarityLabel } from "@/components/rarity-bar";
 
 export function generateStaticParams() {
@@ -91,6 +93,7 @@ export default async function AuraPage({ params }: PageProps<"/auras/[slug]">) {
         </div>
 
         <aside className="space-y-8">
+          <AdsterraBanner slot={RECTANGLE} className="items-start" />
           <div className="panel p-6">
             <p className="eyebrow">Feeding focus</p>
             <p className="mt-2 font-mono text-sm">{aura.focus}</p>
