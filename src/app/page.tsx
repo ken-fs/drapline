@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Flask, BookOpen, Calculator, ListChecks, Sparkle } from "@phosphor-icons/react/dist/ssr";
@@ -6,6 +7,11 @@ import { ACHIEVEMENTS } from "@/data/achievements";
 import { RarityBar } from "@/components/rarity-bar";
 import { AdsterraBanner } from "@/components/adsterra-banner";
 import { LEADERBOARD, RECTANGLE } from "@/lib/ads";
+
+// 标题/描述继承 layout；canonical 只能放页面级，放 layout 会被所有缺省子页继承成指向首页
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const DATABASE = [
   { href: "/auras/", title: "Six auras", meta: "6 entries", desc: "Every aura's stat focus, treatment and Steam unlock rate — including the two Fandom misses." },
