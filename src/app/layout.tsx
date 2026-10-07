@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
@@ -12,23 +12,30 @@ import { SITE_URL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
  * for body copy that has to survive long tables, and Plex Mono for every
  * number the site prints. The mono is doing real work — stat lines, unlock
  * rates, prices and week numbers all align in columns because of it.
+ *
+ * Fonts are self-hosted (src/fonts, OFL): next/font/google downloads them during
+ * the build, and a flaky download broke a Cloudflare build on 2026-10-06.
  */
-const spaceGrotesk = Space_Grotesk({
+const spaceGrotesk = localFont({
+  src: "../fonts/space-grotesk-latin-wght-normal.woff2",
   variable: "--font-space-grotesk",
-  subsets: ["latin"],
+  weight: "300 700",
   display: "swap",
 });
 
-const archivo = Archivo({
+const archivo = localFont({
+  src: "../fonts/archivo-latin-wght-normal.woff2",
   variable: "--font-archivo",
-  subsets: ["latin"],
+  weight: "100 900",
   display: "swap",
 });
 
-const plexMono = IBM_Plex_Mono({
+const plexMono = localFont({
+  src: [
+    { path: "../fonts/ibm-plex-mono-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/ibm-plex-mono-latin-500-normal.woff2", weight: "500", style: "normal" },
+  ],
   variable: "--font-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
   display: "swap",
 });
 
