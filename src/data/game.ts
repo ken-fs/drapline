@@ -7,7 +7,7 @@
  * developer's store-page copy. Nothing is estimated. Where sources disagree the
  * disagreement is recorded in `disputed` instead of being silently resolved.
  *
- * Last verified: 2026-09-29 against patch 1.0.2.
+ * Last verified: 2026-10-13 against patch 1.0.3.
  */
 
 export const SITE_NAME = "Drapline Field Lab";
@@ -618,7 +618,8 @@ export const ENDINGS_SCENARIO_2 = {
 };
 
 export const VERSIONS = [
-  { version: "1.0.2", date: "2026-09-28", note: "Current. Third patch in five days." },
+  { version: "1.0.3", date: "2026-10-02", note: "Current. Fixes Star Scales not applying against skills like Stalwart Press, Quick-Dry Undershirt / Sturdy Boots chest drops not granting Action Points, several Chain of Misfortune issues, unintended behaviours tied to certain endings, and the New Possibilities achievement failing to unlock on some saves. The demo was refreshed to match 1.0 on 10-05." },
+  { version: "1.0.2", date: "2026-09-28", note: "Third patch in five days." },
   { version: "1.0.1", date: "2026-09-25", note: "Released the day after launch." },
   { version: "1.0.0", date: "2026-09-24", note: "Full release out of Early Access, plus the soundtrack on Steam." },
   { version: "0.9.3", date: "2026-07-23", note: "Last Early Access patch: new artifacts including Strong Acid Slime and Ice items." },

@@ -6,7 +6,7 @@ import { PageHeader, SourceNote } from "@/components/page-header";
 export const metadata: Metadata = {
   title: "DRAPLINE patch notes and version history",
   description:
-    "DRAPLINE's version history from Early Access to 1.0.2, with the dates Steam recorded for each patch. Three updates landed in the first five days after full release.",
+    "DRAPLINE's version history from Early Access to 1.0.3, with the dates Steam recorded for each patch. Four updates landed in the first nine days after full release.",
   alternates: { canonical: "/updates/" },
 };
 
@@ -19,9 +19,10 @@ export default function UpdatesPage() {
         breadcrumb={[{ href: "/", label: "Home" }]}
         standfirst={
           <p>
-            DRAPLINE shipped 1.0 on 24 September 2026 and was patched twice in the following four days.
-            This page tracks the versions Steam records. Fandom&apos;s version page still stops at 0.9.3
-            from July, so treat anything quoting an older patch number as stale.
+            DRAPLINE shipped 1.0 on 24 September 2026 and has been patched three times since — most
+            recently 1.0.3 on 2 October, followed by a demo refresh on 5 October that brings the free
+            trial in line with the full release. This page tracks the versions Steam records. Fandom&apos;s
+            version page still stops at 0.9.3 from July, so treat anything quoting an older patch number as stale.
           </p>
         }
         meta={

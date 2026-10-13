@@ -128,6 +128,12 @@ export default function EndingsPage() {
                 game has not shipped, and a site claiming five total has not read the store page. Both
                 numbers are true about different things.
               </p>
+              <p>
+                One caution for route hunters: patch 1.0.3 (2 October) fixed &ldquo;several unintended
+                behaviours related to certain endings&rdquo; and a bug where the New Possibilities
+                achievement would not unlock on some saves. If you followed a route guide and the ending
+                did not trigger, the fix — not your run — may be the reason it works now.
+              </p>
             </div>
             <div className="panel p-6">
               <p className="eyebrow">Route to a second scenario</p>
@@ -185,7 +191,8 @@ export default function EndingsPage() {
         <SourceNote>
           Ending names and conditions: the Fandom endings page, which transcribes in-game text and is
           still accurate about the five named outcomes. Ending count and artwork: the Steam store page.
-          Unlock rates: Steam Community global achievements, 2026-09-29.
+          Unlock rates: Steam Community global achievements, 2026-09-29. Patch behaviour: Steam news
+          post for 1.0.3, 2026-10-02.
         </SourceNote>
       </div>
     </>
