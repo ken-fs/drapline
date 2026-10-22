@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { GAME, SOURCES } from "@/data/game";
+import { GAME, SOURCES, VERSIONS } from "@/data/game";
 import { PageHeader, SourceNote } from "@/components/page-header";
 
 export const metadata: Metadata = {
@@ -92,8 +92,7 @@ export default function AboutPage() {
         </div>
 
         <SourceNote>
-          Data verified against patch {GAME.reviews.asOf === "2026-09-29" ? "1.0.2" : ""} on{" "}
-          {GAME.reviews.asOf}.
+          Data verified against patch {VERSIONS[0].version} on {GAME.reviews.asOf}.
         </SourceNote>
       </div>
     </>

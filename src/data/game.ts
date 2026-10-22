@@ -25,7 +25,7 @@ export const GAME = {
   platforms: ["Windows"],
   languages: ["Japanese", "English", "Simplified Chinese"],
   genres: ["Roguelite", "Raising sim", "RPG"],
-  reviews: { total: 2327, positive: 2254, negative: 73, pct: 96.9, label: "Overwhelmingly Positive", asOf: "2026-09-29" },
+  reviews: { total: 2686, positive: 2611, negative: 75, pct: 97.2, label: "Overwhelmingly Positive", asOf: "2026-10-22" },
   achievementsTotal: 66,
   skillCount: "200+",
   weeksPerRun: 48,
@@ -712,6 +712,6 @@ export const DISPUTED = [
   {
     topic: "Current patch",
     wrong: "Fandom's version page stops at 0.9.3 (July 2026).",
-    right: "1.0.2, shipped 2026-09-28 — three patches in the first five days after release.",
+    right: "1.0.3, shipped 2026-10-02 — four patches in the first nine days after release.",
   },
 ];
