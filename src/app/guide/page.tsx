@@ -5,9 +5,9 @@ import { GAME } from "@/data/game";
 import { PageHeader, SourceNote } from "@/components/page-header";
 
 export const metadata: Metadata = {
-  title: "DRAPLINE guides — where to start and what a year looks like",
+  title: "DRAPLINE guide: where to start and what a year looks like",
   description:
-    "Four guides that cover a DRAPLINE run end to end: the first year week by week, the Rule/Wild personality system, the money and debt math, and the questions everyone asks first.",
+    "Our DRAPLINE guide has four parts that cover a DRAPLINE run end to end: the first year week by week, the Rule/Wild personality system, the money and debt math, and the questions everyone asks first.",
   alternates: { canonical: "/guide/" },
 };
 
@@ -52,7 +52,7 @@ export default function GuideHub() {
     <>
       <PageHeader
         eyebrow="Guides"
-        title="A DRAPLINE run is 48 weeks long and about an hour of your time"
+        title="DRAPLINE guide: a run is 48 weeks and about an hour"
         breadcrumb={[{ href: "/", label: "Home" }]}
         standfirst={
           <p>

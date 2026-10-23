@@ -7,9 +7,9 @@ import { RarityBar } from "@/components/rarity-bar";
 import { FaqJsonLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
-  title: "DRAPLINE endings: 5 conditions, plus what the 25 TRUE endings are",
+  title: "DRAPLINE endings: all 5 named endings and how to get them",
   description:
-    "Every DRAPLINE ending condition — A Quiet World, Convenient Snack, New Catastrophe, I Yield and Use Responsibly — with the achievement rates behind them, and an honest account of the 25 endings the store page advertises.",
+    "DRAPLINE endings: the 5 named endings (A Quiet World, Convenient Snack, New Catastrophe, I Yield, Use Responsibly), how to get each one, unlock rates, and what the 25 futures means.",
   alternates: { canonical: "/endings/" },
 };
 
@@ -46,13 +46,13 @@ export default function EndingsPage() {
       <FaqJsonLd items={FAQ} />
       <PageHeader
         eyebrow="Story · 5 documented + 25 advertised"
-        title="DRAPLINE endings, and what the number 25 actually refers to"
+        title="DRAPLINE endings: the 5 named endings and the 25 futures"
         breadcrumb={[{ href: "/", label: "Home" }]}
         standfirst={
           <p>
-            The number everyone quotes is 25, and it comes from the store page — but the first scenario
-            ends in one of five named outcomes with published conditions. This page separates the two
-            instead of implying that all 25 have been mapped, because they have not been.
+            DRAPLINE has 5 named endings with known conditions, all in the first scenario, DAYS OF
+            TORNADO. The store page also advertises 25 possible futures, but the developer hasn&apos;t
+            published conditions for the rest. This page keeps the two apart.
           </p>
         }
         meta={
@@ -105,6 +105,9 @@ export default function EndingsPage() {
               </article>
             ))}
           </div>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Want the full run first? Read the <Link href="/guide/beginner/" className="underline underline-offset-2">first-year walkthrough</Link> and the <Link href="/guide/money/" className="underline underline-offset-2">money and debt guide</Link>, since debt decides the Use Responsibly ending.
+          </p>
           <p className="mt-4 text-xs text-muted-foreground">
             Convenient Snack and I Yield carry no unlock rate on the Steam community page in the current
             patch — the achievements exist (42.3% and 23.6%) and are the only trace of those two endings.
