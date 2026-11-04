@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SKILL_ATTRIBUTES, SKILL_SYNERGY, GAME, PERSONALITY } from "@/data/game";
 import { PageHeader, SourceNote } from "@/components/page-header";
 import { FaqJsonLd } from "@/components/json-ld";
+import { ACHIEVEMENTS, ACHIEVEMENTS_AS_OF } from "@/data/achievements";
 
 export const metadata: Metadata = {
   title: "DRAPLINE skills: six attribute trees and the 3/6/9 synergy ladder",
@@ -10,6 +11,10 @@ export const metadata: Metadata = {
     "How DRAPLINE skills work — the six attribute trees, the 3/6/9 synergy thresholds that gate Triple Threat, Greater Power and The Professional, the four-versus-five skill slot rule, and the documented skills in each tree.",
   alternates: { canonical: "/skills/" },
 };
+
+const SYNERGY_RATES = ["Triple Threat", "Greater Power", "The Professional"].map(
+  (name) => ACHIEVEMENTS.find((a) => a.name === name)!.pct,
+);
 
 const FAQ = [
   {
@@ -46,13 +51,13 @@ export default function SkillsPage() {
             <p className="eyebrow">Synergy ladder</p>
             <ul className="mt-2 space-y-1.5 text-sm">
               <li className="flex justify-between">
-                <span>3 skills</span> <span className="font-mono text-xs text-muted-foreground">Lv.1 · 89.7%</span>
+                <span>3 skills</span> <span className="font-mono text-xs text-muted-foreground">Lv.1 · {SYNERGY_RATES[0]}%</span>
               </li>
               <li className="flex justify-between">
-                <span>6 skills</span> <span className="font-mono text-xs text-muted-foreground">Lv.2 · 83.6%</span>
+                <span>6 skills</span> <span className="font-mono text-xs text-muted-foreground">Lv.2 · {SYNERGY_RATES[1]}%</span>
               </li>
               <li className="flex justify-between">
-                <span>9 skills</span> <span className="font-mono text-xs text-muted-foreground">Lv.3 · 63.6%</span>
+                <span>9 skills</span> <span className="font-mono text-xs text-muted-foreground">Lv.3 · {SYNERGY_RATES[2]}%</span>
               </li>
             </ul>
           </div>
@@ -82,9 +87,9 @@ export default function SkillsPage() {
             <h2 className="text-2xl font-semibold tracking-tight">How the ladder works</h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">{SKILL_SYNERGY}</p>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">
-              The unlock rates tell the story of how people actually play: 89.7% of players have switched
-              on a single synergy and 83.6% have reached the six-skill tier, but only 63.6% ever reach
-              nine. The first two rungs come free to almost everyone who finishes a run; the third is
+              The unlock rates tell the story of how people actually play: {SYNERGY_RATES[0]}% of players
+              have switched on a single synergy and {SYNERGY_RATES[1]}% have reached the six-skill tier,
+              but only {SYNERGY_RATES[2]}% ever reach nine. The first two rungs come free to almost everyone who finishes a run; the third is
               where a build stops being incidental and starts being planned.
             </p>
             <div className="prose-wiki mt-6">
@@ -160,7 +165,7 @@ export default function SkillsPage() {
         <SourceNote>
           Tree descriptions and quoted passive effects: in-game skill text transcribed via Fandom. The
           200+ skill count and the synergy ladder: Steam store page and the achievement descriptions for
-          Triple Threat, Greater Power and The Professional. Unlock rates: Steam Community, 2026-09-29.
+          Triple Threat, Greater Power and The Professional. Unlock rates: Steam Community, {ACHIEVEMENTS_AS_OF}.
           Individual skill numbers beyond the documented list are not published by the game.
         </SourceNote>
       </div>
