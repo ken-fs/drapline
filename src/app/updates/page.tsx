@@ -6,7 +6,7 @@ import { PageHeader, SourceNote } from "@/components/page-header";
 export const metadata: Metadata = {
   title: "DRAPLINE patch notes and version history",
   description:
-    "DRAPLINE's version history from Early Access to 1.0.4, with the dates Steam recorded for each patch. Four updates landed in the first nine days after full release.",
+    "DRAPLINE's version history from Early Access to 1.0.5, with the dates Steam recorded for each patch. Four updates landed in the first nine days after full release.",
   alternates: { canonical: "/updates/" },
 };
 
@@ -19,8 +19,8 @@ export default function UpdatesPage() {
         breadcrumb={[{ href: "/", label: "Home" }]}
         standfirst={
           <p>
-            DRAPLINE shipped 1.0 on 24 September 2026 and has been patched four times since. The
-            latest is 1.0.4 on 6 November, which adds a surrender command in battle. A demo refresh
+            DRAPLINE shipped 1.0 on 24 September 2026 and has been patched five times since. The
+            latest is 1.0.5 on 16 November, a bug-fix patch. Before it, 1.0.4 on 6 November added a surrender command in battle. A demo refresh
             on 5 October brought the free trial in line with the full release. This page tracks the versions Steam records. Fandom&apos;s
             version page still stops at 0.9.3 from July, so treat anything quoting an older patch number as stale.
           </p>
@@ -80,7 +80,7 @@ export default function UpdatesPage() {
         </section>
 
         <SourceNote>
-          Patch numbers and dates: the DRAPLINE Steam news feed, retrieved 2026-11-07. The 1.0.4 contents come from the developer&apos;s own Steam post, which gives no numbers for the balance changes.
+          Patch numbers and dates: the DRAPLINE Steam news feed, retrieved 2026-11-17. The 1.0.4 and 1.0.5 contents come from the developer&apos;s own Steam post, which gives no numbers for the balance changes.
         </SourceNote>
       </div>
     </>

@@ -7,7 +7,7 @@
  * developer's store-page copy. Nothing is estimated. Where sources disagree the
  * disagreement is recorded in `disputed` instead of being silently resolved.
  *
- * Last verified: 2026-11-07 against patch 1.0.4.
+ * Last verified: 2026-11-17 against patch 1.0.5.
  */
 
 export const SITE_NAME = "Drapline Field Lab";
@@ -618,7 +618,8 @@ export const ENDINGS_SCENARIO_2 = {
 };
 
 export const VERSIONS = [
-  { version: "1.0.4", date: "2026-11-06", note: "Current. Adds the Woofderful Bone artifact and four skills: Reckless Charge, Ancient Poison, Overzealous Treatment and Shape Memory. Thunder Staff triggers a little more often, and ingredient discounts show up a little more often. Reward Pudding, Metronome and Throwing Knife had their activation counts changed (the post gives no numbers). You can now surrender during a battle. Fixes Substitution not being removed by skills like Stalwart Press, and Witch Hat triggering on the wrong skills. The developer plans 1.1.0 for December with new random events, minor calamities and a new Challenge Boss." },
+  { version: "1.0.5", date: "2026-11-16", note: "Current. Fixes the behaviour of the Woofderful Bone artifact. Fixes the debuff resistance from Antibody Generation not applying to Muscle Soreness, and an incorrect description for Anti-Healing. Also fixes various other text and bugs (the post gives no details)." },
+  { version: "1.0.4", date: "2026-11-06", note: "Adds the Woofderful Bone artifact and four skills: Reckless Charge, Ancient Poison, Overzealous Treatment and Shape Memory. Thunder Staff triggers a little more often, and ingredient discounts show up a little more often. Reward Pudding, Metronome and Throwing Knife had their activation counts changed (the post gives no numbers). You can now surrender during a battle. Fixes Substitution not being removed by skills like Stalwart Press, and Witch Hat triggering on the wrong skills. The developer plans 1.1.0 for December with new random events, minor calamities and a new Challenge Boss." },
   { version: "1.0.3", date: "2026-10-02", note: "Fixes Star Scales not applying against skills like Stalwart Press, Quick-Dry Undershirt / Sturdy Boots chest drops not granting Action Points, several Chain of Misfortune issues, unintended behaviours tied to certain endings, and the New Possibilities achievement failing to unlock on some saves. The demo was refreshed to match 1.0 on 10-05." },
   { version: "1.0.2", date: "2026-09-28", note: "Third patch in five days." },
   { version: "1.0.1", date: "2026-09-25", note: "Released the day after launch." },
@@ -713,6 +714,6 @@ export const DISPUTED = [
   {
     topic: "Current patch",
     wrong: "Fandom's version page stops at 0.9.3 (July 2026).",
-    right: "1.0.4, shipped 2026-11-06 — after four patches in the first nine days after release.",
+    right: "1.0.5, shipped 2026-11-16 — after four patches in the first nine days after release.",
   },
 ];
