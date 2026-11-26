@@ -7,7 +7,7 @@
  * developer's store-page copy. Nothing is estimated. Where sources disagree the
  * disagreement is recorded in `disputed` instead of being silently resolved.
  *
- * Last verified: 2026-11-17 against patch 1.0.5.
+ * Last verified: 2026-11-26 against patch 1.0.5.
  */
 
 export const SITE_NAME = "Drapline Field Lab";

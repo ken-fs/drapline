@@ -80,7 +80,7 @@ export default function UpdatesPage() {
         </section>
 
         <SourceNote>
-          Patch numbers and dates: the DRAPLINE Steam news feed, retrieved 2026-11-17. The 1.0.4 and 1.0.5 contents come from the developer&apos;s own Steam post, which gives no numbers for the balance changes.
+          Patch numbers and dates: the DRAPLINE Steam news feed, retrieved 2026-11-26. The 1.0.4 and 1.0.5 contents come from the developer&apos;s own Steam post, which gives no numbers for the balance changes.
         </SourceNote>
       </div>
     </>
